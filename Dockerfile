@@ -19,6 +19,3 @@ RUN /build-scripts/cleanup.sh /usr/local/src
 FROM acl2_build_base AS acl2
 COPY --from=acl2_build /usr/local/ /usr/local/
 
-FROM scratch
-COPY --from=acl2 / /
-
