@@ -1,5 +1,8 @@
 #!/bin/bash
-cd /usr/local/src
+PREFIX=$1
+BINDIR=$2
+SCRIPTDIR=$3
+cd $PREFIX
 git clone --depth 1 https://github.com/Clozure/ccl ccl
 cd ccl
 wget https://github.com/Clozure/ccl/releases/download/v1.12-dev.5/linuxx86.tar.gz
@@ -11,5 +14,5 @@ make clean
 make
 cd ../..
 echo '(ccl:rebuild-ccl :clean t) (quit)' | ./lx86cl64
-cp /build-scripts/ccl.sh .
-ln -s /usr/local/src/ccl/ccl.sh /usr/local/bin/ccl
+cp $SCRIPTDIR/ccl.sh .
+ln -s $PREFIX/ccl/ccl.sh $BINDIR/ccl
